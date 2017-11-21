@@ -45,6 +45,16 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     private TextView mDescription;
 
+    private TextView mBorrowPerson;
+
+    private TextView mOsType;
+
+    private TextView mOsVersion;
+
+    private TextView mDeviceResolution;
+
+    private TextView mDeviceAssertNumber;
+
     private String mEditedTaskId;
 
     public static AddEditTaskFragment newInstance() {
@@ -81,11 +91,21 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                 if (isNewTask()) {
                     mPresenter.createTask(
                             mTitle.getText().toString(),
-                            mDescription.getText().toString());
+                            mDescription.getText().toString(),
+                            mBorrowPerson.getText().toString(),
+                            mOsType.getText().toString(),
+                            mOsVersion.getText().toString(),
+                            mDeviceResolution.getText().toString(),
+                            mDeviceAssertNumber.getText().toString());
                 } else {
                     mPresenter.updateTask(
                             mTitle.getText().toString(),
-                            mDescription.getText().toString());
+                            mDescription.getText().toString(),
+                            mBorrowPerson.getText().toString(),
+                            mOsType.getText().toString(),
+                            mOsVersion.getText().toString(),
+                            mDeviceResolution.getText().toString(),
+                            mDeviceAssertNumber.getText().toString());
                 }
 
             }
@@ -99,6 +119,11 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
         mTitle = (TextView) root.findViewById(R.id.add_task_title);
         mDescription = (TextView) root.findViewById(R.id.add_task_description);
+        mBorrowPerson = (TextView) root.findViewById(R.id.add_task_borrow_person);
+        mOsType = (TextView) root.findViewById(R.id.add_task_os_type);
+        mOsVersion = (TextView) root.findViewById(R.id.add_task_os_version);
+        mDeviceResolution = (TextView) root.findViewById(R.id.add_task_device_resolution);
+        mDeviceAssertNumber = (TextView) root.findViewById(R.id.add_task_device_assert_number);
 
         setHasOptionsMenu(true);
         setRetainInstance(true);
@@ -124,6 +149,31 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     @Override
     public void setDescription(String description) {
         mDescription.setText(description);
+    }
+
+    @Override
+    public void setBorrowPerson(String borrowPerson) {
+        mDescription.setText(borrowPerson);
+    }
+
+    @Override
+    public void setOsType(String osType) {
+        mDescription.setText(osType);
+    }
+
+    @Override
+    public void setOsVersion(String osVersion) {
+        mDescription.setText(osVersion);
+    }
+
+    @Override
+    public void setDeviceResolution(String deviceResolution) {
+        mDescription.setText(deviceResolution);
+    }
+
+    @Override
+    public void setDeviceAssertNumber(String deviceAssertNumber) {
+        mDescription.setText(deviceAssertNumber);
     }
 
     @Override

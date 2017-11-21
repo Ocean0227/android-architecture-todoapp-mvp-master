@@ -40,8 +40,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     static {
         TASKS_SERVICE_DATA = new LinkedHashMap<>(2);
-        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.");
-        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!");
+        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.", "", "", "", "", "");
+        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!", "", "", "", "", "");
     }
 
     public static TasksRemoteDataSource getInstance() {
@@ -54,8 +54,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
     // Prevent direct instantiation.
     private TasksRemoteDataSource() {}
 
-    private static void addTask(String title, String description) {
-        Task newTask = new Task(title, description);
+    private static void addTask(String title, String description, String borrowPerson, String osType,
+                                String osVersion, String deviceResolution, String deviceAssertNumber) {
+        Task newTask = new Task(title, description, borrowPerson, osType, osVersion, deviceResolution, deviceAssertNumber);
         TASKS_SERVICE_DATA.put(newTask.getId(), newTask);
     }
 
@@ -102,7 +103,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void completeTask(Task task) {
-        Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true);
+        Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true,
+                task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
+                task.getDeviceResolution(), task.getDeviceAssertNumber());
         TASKS_SERVICE_DATA.put(task.getId(), completedTask);
     }
 
@@ -114,7 +117,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void activateTask(Task task) {
-        Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId());
+        Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId(),
+                task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
+                task.getDeviceResolution(), task.getDeviceAssertNumber());
         TASKS_SERVICE_DATA.put(task.getId(), activeTask);
     }
 

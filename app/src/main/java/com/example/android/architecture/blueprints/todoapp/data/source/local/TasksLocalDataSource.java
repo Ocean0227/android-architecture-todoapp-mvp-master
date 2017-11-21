@@ -81,7 +81,13 @@ public class TasksLocalDataSource implements TasksDataSource {
                         c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DESCRIPTION));
                 boolean completed =
                         c.getInt(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_COMPLETED)) == 1;
-                Task task = new Task(title, description, itemId, completed);
+                String borrowPerson = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_BORROW_PERSON));
+                String osType = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_TYPE));
+                String osVersion = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_VERSION));
+                String deviceResolution = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION));
+                String deviceAssertNumber = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER));
+                Task task = new Task(title, description, itemId, completed, borrowPerson,
+                        osType, osVersion, deviceResolution, deviceAssertNumber);
                 tasks.add(task);
             }
         }
@@ -131,7 +137,13 @@ public class TasksLocalDataSource implements TasksDataSource {
                     c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DESCRIPTION));
             boolean completed =
                     c.getInt(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_COMPLETED)) == 1;
-            task = new Task(title, description, itemId, completed);
+            String borrowPerson = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_BORROW_PERSON));
+            String osType = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_TYPE));
+            String osVersion = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_VERSION));
+            String deviceResolution = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION));
+            String deviceAssertNumber = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER));
+            task = new Task(title, description, itemId, completed,  borrowPerson,
+                    osType, osVersion, deviceResolution, deviceAssertNumber);
         }
         if (c != null) {
             c.close();

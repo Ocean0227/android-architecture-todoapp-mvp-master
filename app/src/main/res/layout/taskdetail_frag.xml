@@ -38,12 +38,57 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
-        android:id="@+id/task_detail_description"
+        android:id="@+id/task_detail_borrow_person"
         android:layout_toRightOf="@id/task_detail_complete"
         android:layout_below="@id/task_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
+        android:text="borrow person"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/task_detail_os_type"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_borrow_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="os type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/task_detail_os_version"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_os_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="os version"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/task_detail_device_resolution"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_os_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="device resolution"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/task_detail_device_assert_number"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_device_resolution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="device assert number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/task_detail_description"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_device_assert_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="description"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </RelativeLayout>

@@ -36,17 +36,41 @@ public final class Task {
     private final String mDescription;
 
     private final boolean mCompleted;
+
+    @Nullable
+    private final String mBorrowPerson;
+
+    @Nullable
+    private final String mOsType;
+
+    @Nullable
+    private final String mOsVersion;
+
+    @Nullable
+    private final String mDeviceResolution;
+
+    @Nullable
+    private final String mDeviceAssertNumber;
+
     /**
      * Use this constructor to create a new active Task.
      *
      * @param title
      * @param description
      */
-    public Task(@Nullable String title, @Nullable String description) {
+    public Task(@Nullable String title, @Nullable String description, @Nullable String borrowPerson,
+                @Nullable String osType, @Nullable String osVersion,
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
         mCompleted = false;
+
+        mBorrowPerson = borrowPerson;
+        mOsType = osType;
+        mOsVersion = osVersion;
+        mDeviceResolution = deviceResolution;
+        mDeviceAssertNumber = deviceAssertNumber;
     }
 
     /**
@@ -57,11 +81,19 @@ public final class Task {
      * @param description
      * @param id of the class
      */
-    public Task(@Nullable String title, @Nullable String description, String id) {
+    public Task(@Nullable String title, @Nullable String description, String id,
+                @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
         mId = id;
         mTitle = title;
         mDescription = description;
         mCompleted = false;
+
+        mBorrowPerson = borrowPerson;
+        mOsType = osType;
+        mOsVersion = osVersion;
+        mDeviceResolution = deviceResolution;
+        mDeviceAssertNumber = deviceAssertNumber;
     }
 
     /**
@@ -71,11 +103,19 @@ public final class Task {
      * @param description
      * @param completed
      */
-    public Task(@Nullable String title, @Nullable String description, boolean completed) {
+    public Task(@Nullable String title, @Nullable String description, boolean completed,
+                @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
         mCompleted = completed;
+
+        mBorrowPerson = borrowPerson;
+        mOsType = osType;
+        mOsVersion = osVersion;
+        mDeviceResolution = deviceResolution;
+        mDeviceAssertNumber = deviceAssertNumber;
     }
 
     /**
@@ -87,11 +127,19 @@ public final class Task {
      * @param id
      * @param completed
      */
-    public Task(@Nullable String title, @Nullable String description, String id, boolean completed) {
+    public Task(@Nullable String title, @Nullable String description, String id, boolean completed,
+                @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
         mId = id;
         mTitle = title;
         mDescription = description;
         mCompleted = completed;
+
+        mBorrowPerson = borrowPerson;
+        mOsType = osType;
+        mOsVersion = osVersion;
+        mDeviceResolution = deviceResolution;
+        mDeviceAssertNumber = deviceAssertNumber;
     }
 
     public String getId() {
@@ -117,6 +165,31 @@ public final class Task {
         return mDescription;
     }
 
+    @Nullable
+    public String getBorrowPerson() {
+        return mBorrowPerson;
+    }
+
+    @Nullable
+    public String getOsType() {
+        return mOsType;
+    }
+
+    @Nullable
+    public String getOsVersion() {
+        return mOsVersion;
+    }
+
+    @Nullable
+    public String getDeviceResolution() {
+        return mDeviceResolution;
+    }
+
+    @Nullable
+    public String getDeviceAssertNumber() {
+        return mDeviceAssertNumber;
+    }
+
     public boolean isCompleted() {
         return mCompleted;
     }
@@ -127,7 +200,12 @@ public final class Task {
 
     public boolean isEmpty() {
         return (mTitle == null || "".equals(mTitle)) &&
-                (mDescription == null || "".equals(mDescription));
+                (mDescription == null || "".equals(mDescription)) &&
+                (mBorrowPerson == null || "".equals(mBorrowPerson)) &&
+                (mOsType == null || "".equals(mOsType)) &&
+                (mOsVersion == null || "".equals(mOsVersion)) &&
+                (mDeviceResolution == null || "".equals(mDeviceResolution)) &&
+                (mDeviceAssertNumber == null || "".equals(mDeviceAssertNumber));
     }
 
     @Override
@@ -137,7 +215,12 @@ public final class Task {
         Task task = (Task) o;
         return Objects.equal(mId, task.mId) &&
                 Objects.equal(mTitle, task.mTitle) &&
-                Objects.equal(mDescription, task.mDescription);
+                Objects.equal(mDescription, task.mDescription) &&
+                Objects.equal(mBorrowPerson, task.mBorrowPerson) &&
+                Objects.equal(mOsType, task.mOsType) &&
+                Objects.equal(mOsVersion, task.mOsVersion) &&
+                Objects.equal(mDeviceResolution, task.mDeviceResolution) &&
+                Objects.equal(mDeviceAssertNumber, task.mDeviceAssertNumber);
     }
 
     @Override

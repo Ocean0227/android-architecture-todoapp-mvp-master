@@ -35,13 +35,25 @@ public interface AddEditTaskContract {
         void setDescription(String description);
 
         boolean isActive();
+
+        void setBorrowPerson(String borrowPerson);
+
+        void setOsType(String osType);
+
+        void setOsVersion(String osVersion);
+
+        void setDeviceResolution(String deviceResolution);
+
+        void setDeviceAssertNumber(String deviceAssertNumber);
     }
 
     interface Presenter extends BasePresenter {
 
-        void createTask(String title, String description);
+        void createTask(String title, String description, String borrowPerson, String osType,
+                        String osVersion, String deviceResolution, String deviceAssertNumber);
 
-        void updateTask( String title, String description);
+        void updateTask(String title, String description, String borrowPerson, String osType,
+                         String osVersion, String deviceResolution, String deviceAssertNumber);
 
         void populateTask();
     }

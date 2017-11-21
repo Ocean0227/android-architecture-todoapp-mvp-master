@@ -36,6 +36,37 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <EditText
+            android:id="@+id/add_task_borrow_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/borrow_person_hint"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/add_task_os_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/os_type" />
+
+        <EditText
+            android:id="@+id/add_task_os_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/os_version" />
+
+        <EditText
+            android:id="@+id/add_task_device_resolution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/device_resolution" />
+
+        <EditText
+            android:id="@+id/add_task_device_assert_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/device_assert_number" />
+
+        <EditText
             android:id="@+id/add_task_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

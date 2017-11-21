@@ -64,8 +64,10 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
     }
 
     @Override
-    public void createTask(String title, String description) {
-        Task newTask = new Task(title, description);
+    public void createTask(String title, String description, String borrowPerson, String osType,
+                           String osVersion, String deviceResolution, String deviceAssertNumber) {
+        Task newTask = new Task(title, description, borrowPerson, osType, osVersion,
+                deviceResolution, deviceAssertNumber);
         if (newTask.isEmpty()) {
             mAddTaskView.showEmptyTaskError();
         } else {
@@ -75,11 +77,13 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
     }
 
     @Override
-    public void updateTask(String title, String description) {
+    public void updateTask(String title, String description, String borrowPerson, String osType,
+                           String osVersion, String deviceResolution, String deviceAssertNumber) {
         if (mTaskId == null) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
-        mTasksRepository.saveTask(new Task(title, description, mTaskId));
+        mTasksRepository.saveTask(new Task(title, description, mTaskId, borrowPerson, osType,
+                osVersion, deviceResolution, deviceAssertNumber));
         mAddTaskView.showTasksList(); // After an edit, go back to the list.
     }
 
@@ -97,6 +101,11 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         if (mAddTaskView.isActive()) {
             mAddTaskView.setTitle(task.getTitle());
             mAddTaskView.setDescription(task.getDescription());
+            mAddTaskView.setBorrowPerson(task.getBorrowPerson());
+            mAddTaskView.setOsType(task.getOsType());
+            mAddTaskView.setOsVersion(task.getOsVersion());
+            mAddTaskView.setDeviceResolution(task.getDeviceResolution());
+            mAddTaskView.setDeviceAssertNumber(task.getDeviceAssertNumber());;
         }
     }
 
