@@ -153,27 +153,27 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     @Override
     public void setBorrowPerson(String borrowPerson) {
-        mDescription.setText(borrowPerson);
+        mBorrowPerson.setText(borrowPerson);
     }
 
     @Override
     public void setOsType(String osType) {
-        mDescription.setText(osType);
+        mOsType.setText(osType);
     }
 
     @Override
     public void setOsVersion(String osVersion) {
-        mDescription.setText(osVersion);
+        mOsVersion.setText(osVersion);
     }
 
     @Override
     public void setDeviceResolution(String deviceResolution) {
-        mDescription.setText(deviceResolution);
+        mDeviceResolution.setText(deviceResolution);
     }
 
     @Override
     public void setDeviceAssertNumber(String deviceAssertNumber) {
-        mDescription.setText(deviceAssertNumber);
+        mDeviceAssertNumber.setText(deviceAssertNumber);
     }
 
     @Override
