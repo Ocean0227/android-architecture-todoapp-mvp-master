@@ -57,6 +57,16 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
 
     private CheckBox mDetailCompleteStatus;
 
+    private TextView mDetailBorrowPerson;
+
+    private TextView mDetailOsType;
+
+    private TextView mDetailOsVersion;
+
+    private TextView mDetailDeviceResolution;
+
+    private TextView mDetailDeviceAssertNumber;
+
     public static TaskDetailFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
         arguments.putString(ARGUMENT_TASK_ID, taskId);
@@ -80,6 +90,11 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
         mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
         mDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
+        mDetailBorrowPerson = (TextView) root.findViewById(R.id.task_detail_borrow_person);
+        mDetailOsType = (TextView) root.findViewById(R.id.task_detail_os_type);
+        mDetailOsVersion = (TextView) root.findViewById(R.id.task_detail_os_version);
+        mDetailDeviceResolution = (TextView) root.findViewById(R.id.task_detail_device_resolution);
+        mDetailDeviceAssertNumber = (TextView) root.findViewById(R.id.task_detail_device_assert_number);
 
         // Set up floating action button
         FloatingActionButton fab =
@@ -135,9 +150,60 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     }
 
     @Override
+    public void hideBorrowPerson() { mDetailBorrowPerson.setVisibility(View.GONE); }
+
+    @Override
+    public void hideOsType() {
+        mDetailOsType.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideOsVersion() {
+        mDetailOsVersion.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideDeviceResolution() {
+        mDetailDeviceResolution.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideDeviceAssertNumber() { mDetailDeviceAssertNumber.setVisibility(View.GONE); }
+
+    @Override
     public void showDescription(String description) {
         mDetailDescription.setVisibility(View.VISIBLE);
         mDetailDescription.setText(description);
+    }
+
+    @Override
+    public void showBorrowPerson(String borrowPerson) {
+        mDetailBorrowPerson.setVisibility(View.VISIBLE);
+        mDetailBorrowPerson.setText(borrowPerson);
+    }
+
+    @Override
+    public void showOsType(String osType) {
+        mDetailOsType.setVisibility(View.VISIBLE);
+        mDetailOsType.setText(osType);
+    }
+
+    @Override
+    public void showOsVersion(String osVersion) {
+        mDetailOsVersion.setVisibility(View.VISIBLE);
+        mDetailOsVersion.setText(osVersion);
+    }
+
+    @Override
+    public void showDeviceResolution(String deviceResolution) {
+        mDetailDeviceResolution.setVisibility(View.VISIBLE);
+        mDetailDeviceResolution.setText(deviceResolution);
+    }
+
+    @Override
+    public void showDeviceAssertNumber(String deviceAssertNumber) {
+        mDetailDeviceAssertNumber.setVisibility(View.VISIBLE);
+        mDetailDeviceAssertNumber.setText(deviceAssertNumber);
     }
 
     @Override

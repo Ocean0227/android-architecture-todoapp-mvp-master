@@ -38,6 +38,11 @@ public class TasksDbHelper extends SQLiteOpenHelper {
                     TasksPersistenceContract.TaskEntry.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
                     TasksPersistenceContract.TaskEntry.COLUMN_NAME_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
                     TasksPersistenceContract.TaskEntry.COLUMN_NAME_COMPLETED + BOOLEAN_TYPE +
+                    TasksPersistenceContract.TaskEntry.COLUMN_NAME_BORROW_PERSON + BOOLEAN_TYPE +
+                    TasksPersistenceContract.TaskEntry.COLUMN_NAME_OS_TYPE + BOOLEAN_TYPE +
+                    TasksPersistenceContract.TaskEntry.COLUMN_NAME_OS_VERSION + BOOLEAN_TYPE +
+                    TasksPersistenceContract.TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION + BOOLEAN_TYPE +
+                    TasksPersistenceContract.TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER + BOOLEAN_TYPE +
             " )";
 
     public TasksDbHelper(Context context) {

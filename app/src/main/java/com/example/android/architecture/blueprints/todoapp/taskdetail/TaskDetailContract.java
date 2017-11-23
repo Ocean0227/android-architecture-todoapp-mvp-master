@@ -49,6 +49,26 @@ public interface TaskDetailContract {
         void showTaskMarkedActive();
 
         boolean isActive();
+
+        void hideBorrowPerson();
+
+        void showBorrowPerson(String borrowPerson);
+
+        void hideOsType();
+
+        void showOsType(String osType);
+
+        void hideOsVersion();
+
+        void showOsVersion(String osVersion);
+
+        void hideDeviceResolution();
+
+        void showDeviceResolution(String deviceResolution);
+
+        void hideDeviceAssertNumber();
+
+        void showDeviceAssertNumber(String deviceAssertNumber);
     }
 
     interface Presenter extends BasePresenter {

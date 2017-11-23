@@ -123,6 +123,11 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
 
     private void showTask(Task task) {
         String title = task.getTitle();
+        String borrowPerson = task.getBorrowPerson();
+        String osType = task.getOsType();
+        String osVersion = task.getOsVersion();
+        String deviceResolution = task.getDeviceResolution();
+        String deviceAssertNumber = task.getDeviceAssertNumber();
         String description = task.getDescription();
 
         if (title != null && title.isEmpty()) {
@@ -131,11 +136,42 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
             mTaskDetailView.showTitle(title);
         }
 
+        if (borrowPerson != null && borrowPerson.isEmpty()) {
+            mTaskDetailView.hideBorrowPerson();
+        } else {
+            mTaskDetailView.showBorrowPerson(borrowPerson);
+        }
+
+        if (osType != null && osType.isEmpty()) {
+            mTaskDetailView.hideOsType();
+        } else {
+            mTaskDetailView.showOsType(osType);
+        }
+
+        if (osVersion != null && osVersion.isEmpty()) {
+            mTaskDetailView.hideOsVersion();
+        } else {
+            mTaskDetailView.showOsVersion(osVersion);
+        }
+
+        if (deviceResolution != null && deviceResolution.isEmpty()) {
+            mTaskDetailView.hideDeviceResolution();
+        } else {
+            mTaskDetailView.showDeviceResolution(deviceResolution);
+        }
+
+        if (deviceAssertNumber != null && deviceAssertNumber.isEmpty()) {
+            mTaskDetailView.hideDeviceAssertNumber();
+        } else {
+            mTaskDetailView.showDeviceAssertNumber(deviceAssertNumber);
+        }
+
         if (description != null && description.isEmpty()) {
             mTaskDetailView.hideDescription();
         } else {
             mTaskDetailView.showDescription(description);
         }
+
         mTaskDetailView.showCompletionStatus(task.isCompleted());
     }
 }

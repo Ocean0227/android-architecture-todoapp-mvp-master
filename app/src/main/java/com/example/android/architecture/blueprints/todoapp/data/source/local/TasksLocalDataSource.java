@@ -67,7 +67,12 @@ public class TasksLocalDataSource implements TasksDataSource {
                 TaskEntry.COLUMN_NAME_ENTRY_ID,
                 TaskEntry.COLUMN_NAME_TITLE,
                 TaskEntry.COLUMN_NAME_DESCRIPTION,
-                TaskEntry.COLUMN_NAME_COMPLETED
+                TaskEntry.COLUMN_NAME_COMPLETED,
+                TaskEntry.COLUMN_NAME_BORROW_PERSON,
+                TaskEntry.COLUMN_NAME_OS_TYPE,
+                TaskEntry.COLUMN_NAME_OS_VERSION,
+                TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION,
+                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER
         };
 
         Cursor c = db.query(
@@ -118,7 +123,12 @@ public class TasksLocalDataSource implements TasksDataSource {
                 TaskEntry.COLUMN_NAME_ENTRY_ID,
                 TaskEntry.COLUMN_NAME_TITLE,
                 TaskEntry.COLUMN_NAME_DESCRIPTION,
-                TaskEntry.COLUMN_NAME_COMPLETED
+                TaskEntry.COLUMN_NAME_COMPLETED,
+                TaskEntry.COLUMN_NAME_BORROW_PERSON,
+                TaskEntry.COLUMN_NAME_OS_TYPE,
+                TaskEntry.COLUMN_NAME_OS_VERSION,
+                TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION,
+                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER
         };
 
         String selection = TaskEntry.COLUMN_NAME_ENTRY_ID + " LIKE ?";
@@ -142,8 +152,7 @@ public class TasksLocalDataSource implements TasksDataSource {
             String osVersion = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_VERSION));
             String deviceResolution = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION));
             String deviceAssertNumber = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER));
-            task = new Task(title, description, itemId, completed,  borrowPerson,
-                    osType, osVersion, deviceResolution, deviceAssertNumber);
+            task = new Task(title, description, itemId, completed, borrowPerson, osType, osVersion, deviceResolution, deviceAssertNumber);
         }
         if (c != null) {
             c.close();
@@ -168,6 +177,10 @@ public class TasksLocalDataSource implements TasksDataSource {
         values.put(TaskEntry.COLUMN_NAME_TITLE, task.getTitle());
         values.put(TaskEntry.COLUMN_NAME_DESCRIPTION, task.getDescription());
         values.put(TaskEntry.COLUMN_NAME_COMPLETED, task.isCompleted());
+        values.put(TaskEntry.COLUMN_NAME_OS_TYPE, task.getOsType());
+        values.put(TaskEntry.COLUMN_NAME_OS_VERSION, task.getOsVersion());
+        values.put(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION, task.getDeviceResolution());
+        values.put(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER, task.getDeviceAssertNumber());
 
         db.insert(TaskEntry.TABLE_NAME, null, values);
 
