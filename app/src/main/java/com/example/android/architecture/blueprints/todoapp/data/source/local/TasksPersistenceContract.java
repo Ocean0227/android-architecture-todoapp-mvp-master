@@ -40,5 +40,6 @@ public final class TasksPersistenceContract {
         public static final String COLUMN_NAME_OS_VERSION = "os version";
         public static final String COLUMN_NAME_DEVICE_RESOLUTION = "device resolution";
         public static final String COLUMN_NAME_DEVICE_ASSERT_NUMBER = "device assert number";
+        public static final String COLUMN_NAME_BORROW_TIME = "borrow time";
     }
 }

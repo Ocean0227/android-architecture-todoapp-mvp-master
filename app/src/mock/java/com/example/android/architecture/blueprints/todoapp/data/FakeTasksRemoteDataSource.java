@@ -65,7 +65,7 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
     public void completeTask(Task task) {
         Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true,
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
         TASKS_SERVICE_DATA.put(task.getId(), completedTask);
     }
 
@@ -78,7 +78,7 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
     public void activateTask(Task task) {
         Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId(),
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
         TASKS_SERVICE_DATA.put(task.getId(), activeTask);
     }
 

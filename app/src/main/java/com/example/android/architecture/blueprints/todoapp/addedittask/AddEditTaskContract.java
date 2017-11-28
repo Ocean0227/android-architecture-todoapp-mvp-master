@@ -45,15 +45,17 @@ public interface AddEditTaskContract {
         void setDeviceResolution(String deviceResolution);
 
         void setDeviceAssertNumber(String deviceAssertNumber);
+
+        void setBorrowTime(String borrowTime);
     }
 
     interface Presenter extends BasePresenter {
 
         void createTask(String title, String description, String borrowPerson, String osType,
-                        String osVersion, String deviceResolution, String deviceAssertNumber);
+                        String osVersion, String deviceResolution, String deviceAssertNumber, String borrowTime);
 
         void updateTask(String title, String description, String borrowPerson, String osType,
-                         String osVersion, String deviceResolution, String deviceAssertNumber);
+                         String osVersion, String deviceResolution, String deviceAssertNumber, String borrowTime);
 
         void populateTask();
     }

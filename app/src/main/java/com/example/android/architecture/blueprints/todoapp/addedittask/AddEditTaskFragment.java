@@ -26,16 +26,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.architecture.blueprints.todoapp.R;
+import com.example.android.architecture.blueprints.todoapp.addedittask.widget.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Main UI for the add task screen. Users can enter a task title and description.
  */
-public class AddEditTaskFragment extends Fragment implements AddEditTaskContract.View {
+public class AddEditTaskFragment extends Fragment implements AddEditTaskContract.View, View.OnClickListener{
 
     public static final String ARGUMENT_EDIT_TASK_ID = "EDIT_TASK_ID";
 
@@ -55,7 +61,15 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     private TextView mDeviceAssertNumber;
 
+    private TextView mBorrowTime;
+
     private String mEditedTaskId;
+
+    private RelativeLayout selectTime;
+
+    private CustomDatePicker customDatePicker2;
+
+    public String now;
 
     public static AddEditTaskFragment newInstance() {
         return new AddEditTaskFragment();
@@ -96,7 +110,8 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                             mOsType.getText().toString(),
                             mOsVersion.getText().toString(),
                             mDeviceResolution.getText().toString(),
-                            mDeviceAssertNumber.getText().toString());
+                            mDeviceAssertNumber.getText().toString(),
+                            mBorrowTime.getText().toString());
                 } else {
                     mPresenter.updateTask(
                             mTitle.getText().toString(),
@@ -105,7 +120,8 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                             mOsType.getText().toString(),
                             mOsVersion.getText().toString(),
                             mDeviceResolution.getText().toString(),
-                            mDeviceAssertNumber.getText().toString());
+                            mDeviceAssertNumber.getText().toString(),
+                            mBorrowTime.getText().toString());
                 }
 
             }
@@ -124,10 +140,28 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         mOsVersion = (TextView) root.findViewById(R.id.add_task_os_version);
         mDeviceResolution = (TextView) root.findViewById(R.id.add_task_device_resolution);
         mDeviceAssertNumber = (TextView) root.findViewById(R.id.add_task_device_assert_number);
+        mBorrowTime = (TextView) root.findViewById(R.id.currentTime);
+        selectTime = (RelativeLayout) root.findViewById(R.id.selectTime);
+        selectTime.setOnClickListener(this);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+        now = sdf.format(new Date());
+        mBorrowTime.setText(now);
 
         setHasOptionsMenu(true);
         setRetainInstance(true);
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.selectTime:
+                // 日期格式为yyyy-MM-dd HH:mm
+                showDatePicker();
+                break;
+        }
     }
 
     @Override
@@ -177,6 +211,11 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     }
 
     @Override
+    public void setBorrowTime(String borrowTime) {
+        mBorrowTime.setText(borrowTime);
+    }
+
+    @Override
     public boolean isActive() {
         return isAdded();
     }
@@ -189,5 +228,24 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     private boolean isNewTask() {
         return mEditedTaskId == null;
+    }
+
+    private void showDatePicker() {
+        try {
+
+
+            customDatePicker2 = new CustomDatePicker(getActivity(), new CustomDatePicker.ResultHandler() {
+                @Override
+                public void handle(String time) { // 回调接口，获得选中的时间
+                    mBorrowTime.setText(time);
+                }
+            }, "2010-01-01 00:00", now); // 初始化日期格式：yyyy-MM-dd HH:mm
+            customDatePicker2.showSpecificTime(true); // 显示时和分
+            customDatePicker2.setIsLoop(true); // 允许循环滚动
+            customDatePicker2.show(mBorrowTime.getText().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

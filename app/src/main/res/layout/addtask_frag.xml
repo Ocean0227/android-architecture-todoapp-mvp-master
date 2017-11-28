@@ -42,6 +42,59 @@
             android:hint="@string/borrow_person_hint"
             android:singleLine="true" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="@string/select_time"
+                android:textColor="@color/color3"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/selectTime"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color2"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="@string/current_time"
+                android:textColor="@color/color4"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/currentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:gravity="center"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/color5"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/add_task_os_type"
             android:layout_width="match_parent"

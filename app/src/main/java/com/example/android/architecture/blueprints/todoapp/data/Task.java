@@ -52,6 +52,9 @@ public final class Task {
     @Nullable
     private final String mDeviceAssertNumber;
 
+    @Nullable
+    private final String mBorrowTime;
+
     /**
      * Use this constructor to create a new active Task.
      *
@@ -59,8 +62,8 @@ public final class Task {
      * @param description
      */
     public Task(@Nullable String title, @Nullable String description, @Nullable String borrowPerson,
-                @Nullable String osType, @Nullable String osVersion,
-                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
+                @Nullable String osType, @Nullable String osVersion, @Nullable String deviceResolution,
+                @Nullable String deviceAssertNumber, @Nullable String borrowTime) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
@@ -71,6 +74,7 @@ public final class Task {
         mOsVersion = osVersion;
         mDeviceResolution = deviceResolution;
         mDeviceAssertNumber = deviceAssertNumber;
+        mBorrowTime = borrowTime;
     }
 
     /**
@@ -83,7 +87,7 @@ public final class Task {
      */
     public Task(@Nullable String title, @Nullable String description, String id,
                 @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
-                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber,  @Nullable String borrowTime) {
         mId = id;
         mTitle = title;
         mDescription = description;
@@ -94,6 +98,7 @@ public final class Task {
         mOsVersion = osVersion;
         mDeviceResolution = deviceResolution;
         mDeviceAssertNumber = deviceAssertNumber;
+        mBorrowTime = borrowTime;
     }
 
     /**
@@ -105,7 +110,7 @@ public final class Task {
      */
     public Task(@Nullable String title, @Nullable String description, boolean completed,
                 @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
-                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber,  @Nullable String borrowTime) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
@@ -116,6 +121,7 @@ public final class Task {
         mOsVersion = osVersion;
         mDeviceResolution = deviceResolution;
         mDeviceAssertNumber = deviceAssertNumber;
+        mBorrowTime = borrowTime;
     }
 
     /**
@@ -129,7 +135,7 @@ public final class Task {
      */
     public Task(@Nullable String title, @Nullable String description, String id, boolean completed,
                 @Nullable String borrowPerson, @Nullable String osType, @Nullable String osVersion,
-                @Nullable String deviceResolution, @Nullable String deviceAssertNumber) {
+                @Nullable String deviceResolution, @Nullable String deviceAssertNumber,  @Nullable String borrowTime) {
         mId = id;
         mTitle = title;
         mDescription = description;
@@ -140,6 +146,7 @@ public final class Task {
         mOsVersion = osVersion;
         mDeviceResolution = deviceResolution;
         mDeviceAssertNumber = deviceAssertNumber;
+        mBorrowTime = borrowTime;
     }
 
     public String getId() {
@@ -190,6 +197,11 @@ public final class Task {
         return mDeviceAssertNumber;
     }
 
+    @Nullable
+    public String getBorrowTime() {
+        return mBorrowTime;
+    }
+
     public boolean isCompleted() {
         return mCompleted;
     }
@@ -220,7 +232,8 @@ public final class Task {
                 Objects.equal(mOsType, task.mOsType) &&
                 Objects.equal(mOsVersion, task.mOsVersion) &&
                 Objects.equal(mDeviceResolution, task.mDeviceResolution) &&
-                Objects.equal(mDeviceAssertNumber, task.mDeviceAssertNumber);
+                Objects.equal(mDeviceAssertNumber, task.mDeviceAssertNumber) &&
+                Objects.equal(mBorrowTime, task.mBorrowTime);
     }
 
     @Override

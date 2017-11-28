@@ -65,9 +65,10 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
 
     @Override
     public void createTask(String title, String description, String borrowPerson, String osType,
-                           String osVersion, String deviceResolution, String deviceAssertNumber) {
+                           String osVersion, String deviceResolution, String deviceAssertNumber,
+                            String borrowTime) {
         Task newTask = new Task(title, description, borrowPerson, osType, osVersion,
-                deviceResolution, deviceAssertNumber);
+                deviceResolution, deviceAssertNumber, borrowTime);
         if (newTask.isEmpty()) {
             mAddTaskView.showEmptyTaskError();
         } else {
@@ -78,12 +79,13 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
 
     @Override
     public void updateTask(String title, String description, String borrowPerson, String osType,
-                           String osVersion, String deviceResolution, String deviceAssertNumber) {
+                           String osVersion, String deviceResolution, String deviceAssertNumber,
+                           String borrowTime) {
         if (mTaskId == null) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
         mTasksRepository.saveTask(new Task(title, description, mTaskId, borrowPerson, osType,
-                osVersion, deviceResolution, deviceAssertNumber));
+                osVersion, deviceResolution, deviceAssertNumber, borrowTime));
         mAddTaskView.showTasksList(); // After an edit, go back to the list.
     }
 
@@ -105,7 +107,8 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
             mAddTaskView.setOsType(task.getOsType());
             mAddTaskView.setOsVersion(task.getOsVersion());
             mAddTaskView.setDeviceResolution(task.getDeviceResolution());
-            mAddTaskView.setDeviceAssertNumber(task.getDeviceAssertNumber());;
+            mAddTaskView.setDeviceAssertNumber(task.getDeviceAssertNumber());
+            mAddTaskView.setBorrowTime(task.getBorrowTime());
         }
     }
 

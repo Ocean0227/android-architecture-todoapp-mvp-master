@@ -143,7 +143,7 @@ public class TasksRepository implements TasksDataSource {
 
         Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true,
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
 
         // Do in memory cache update to keep the app UI up to date
         if (mCachedTasks == null) {
@@ -166,7 +166,7 @@ public class TasksRepository implements TasksDataSource {
 
         Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId(),
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
 
         // Do in memory cache update to keep the app UI up to date
         if (mCachedTasks == null) {

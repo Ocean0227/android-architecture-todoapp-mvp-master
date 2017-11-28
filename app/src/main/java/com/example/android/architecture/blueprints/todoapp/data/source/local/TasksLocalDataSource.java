@@ -72,7 +72,8 @@ public class TasksLocalDataSource implements TasksDataSource {
                 TaskEntry.COLUMN_NAME_OS_TYPE,
                 TaskEntry.COLUMN_NAME_OS_VERSION,
                 TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION,
-                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER
+                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER,
+                TaskEntry.COLUMN_NAME_BORROW_TIME
         };
 
         Cursor c = db.query(
@@ -91,8 +92,9 @@ public class TasksLocalDataSource implements TasksDataSource {
                 String osVersion = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_VERSION));
                 String deviceResolution = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION));
                 String deviceAssertNumber = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER));
+                String borrowTime = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_BORROW_TIME));
                 Task task = new Task(title, description, itemId, completed, borrowPerson,
-                        osType, osVersion, deviceResolution, deviceAssertNumber);
+                        osType, osVersion, deviceResolution, deviceAssertNumber, borrowTime);
                 tasks.add(task);
             }
         }
@@ -128,7 +130,8 @@ public class TasksLocalDataSource implements TasksDataSource {
                 TaskEntry.COLUMN_NAME_OS_TYPE,
                 TaskEntry.COLUMN_NAME_OS_VERSION,
                 TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION,
-                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER
+                TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER,
+                TaskEntry.COLUMN_NAME_BORROW_TIME
         };
 
         String selection = TaskEntry.COLUMN_NAME_ENTRY_ID + " LIKE ?";
@@ -152,7 +155,9 @@ public class TasksLocalDataSource implements TasksDataSource {
             String osVersion = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_OS_VERSION));
             String deviceResolution = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION));
             String deviceAssertNumber = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER));
-            task = new Task(title, description, itemId, completed, borrowPerson, osType, osVersion, deviceResolution, deviceAssertNumber);
+            String borrowTime = c.getString(c.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_BORROW_TIME));
+            task = new Task(title, description, itemId, completed, borrowPerson, osType, osVersion,
+                    deviceResolution, deviceAssertNumber, borrowTime);
         }
         if (c != null) {
             c.close();
@@ -181,6 +186,7 @@ public class TasksLocalDataSource implements TasksDataSource {
         values.put(TaskEntry.COLUMN_NAME_OS_VERSION, task.getOsVersion());
         values.put(TaskEntry.COLUMN_NAME_DEVICE_RESOLUTION, task.getDeviceResolution());
         values.put(TaskEntry.COLUMN_NAME_DEVICE_ASSERT_NUMBER, task.getDeviceAssertNumber());
+        values.put(TaskEntry.COLUMN_NAME_BORROW_TIME, task.getBorrowTime());
 
         db.insert(TaskEntry.TABLE_NAME, null, values);
 

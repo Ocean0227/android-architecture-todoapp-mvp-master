@@ -40,8 +40,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     static {
         TASKS_SERVICE_DATA = new LinkedHashMap<>(2);
-        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.", "", "", "", "", "");
-        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!", "", "", "", "", "");
+        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.", "", "", "", "", "", "");
+        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!", "", "", "", "", "", "");
     }
 
     public static TasksRemoteDataSource getInstance() {
@@ -55,8 +55,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
     private TasksRemoteDataSource() {}
 
     private static void addTask(String title, String description, String borrowPerson, String osType,
-                                String osVersion, String deviceResolution, String deviceAssertNumber) {
-        Task newTask = new Task(title, description, borrowPerson, osType, osVersion, deviceResolution, deviceAssertNumber);
+                                String osVersion, String deviceResolution, String deviceAssertNumber,
+                                String borrowTime) {
+        Task newTask = new Task(title, description, borrowPerson, osType, osVersion, deviceResolution, deviceAssertNumber, borrowTime);
         TASKS_SERVICE_DATA.put(newTask.getId(), newTask);
     }
 
@@ -105,7 +106,7 @@ public class TasksRemoteDataSource implements TasksDataSource {
     public void completeTask(Task task) {
         Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true,
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
         TASKS_SERVICE_DATA.put(task.getId(), completedTask);
     }
 
@@ -119,7 +120,7 @@ public class TasksRemoteDataSource implements TasksDataSource {
     public void activateTask(Task task) {
         Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId(),
                 task.getBorrowPerson(), task.getOsType(), task.getOsVersion(),
-                task.getDeviceResolution(), task.getDeviceAssertNumber());
+                task.getDeviceResolution(), task.getDeviceAssertNumber(), task.getBorrowTime());
         TASKS_SERVICE_DATA.put(task.getId(), activeTask);
     }
 
