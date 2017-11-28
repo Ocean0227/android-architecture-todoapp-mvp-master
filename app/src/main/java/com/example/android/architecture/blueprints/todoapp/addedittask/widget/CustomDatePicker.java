@@ -130,11 +130,11 @@ public class CustomDatePicker {
         startDay = startCalendar.get(Calendar.DAY_OF_MONTH);
         startHour = startCalendar.get(Calendar.HOUR_OF_DAY);
         startMinute = startCalendar.get(Calendar.MINUTE);
-        endYear = endCalendar.get(Calendar.YEAR);
-        endMonth = endCalendar.get(Calendar.MONTH) + 1;
-        endDay = endCalendar.get(Calendar.DAY_OF_MONTH);
-        endHour = endCalendar.get(Calendar.HOUR_OF_DAY);
-        endMinute = endCalendar.get(Calendar.MINUTE);
+        endYear = endCalendar.get(Calendar.YEAR) + 1;
+        endMonth = endCalendar.get(Calendar.MONTH) + 2;
+        endDay = endCalendar.get(Calendar.DAY_OF_MONTH) + 31;
+        endHour = endCalendar.get(Calendar.HOUR_OF_DAY) + 24;
+        endMinute = endCalendar.get(Calendar.MINUTE) + 59;
         spanYear = startYear != endYear;
         spanMon = (!spanYear) && (startMonth != endMonth);
         spanDay = (!spanMon) && (startDay != endDay);
